@@ -2,8 +2,12 @@ build:
 	docker compose build --no-cache
 	docker compose up -d
 	docker compose exec php-fpm composer install
+	docker compose exec php-fpm composer run-script post-root-package-install
 	docker compose exec php-cli composer install --ignore-platform-req=ext-sockets
 	docker compose exec php-cli php app.php do-nothing
+
+request:
+	docker compose exec php-cli php app.php token-verify
 
 up:
 	docker compose up -d
