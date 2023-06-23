@@ -13,6 +13,11 @@ make build
 /app/.env -> JWT_PUBLIC={PUBLIC}
 ``
 
+## Запустить скрипт
+```shell
+make requrest
+```
+
 В файле ``app/app/Http/Controllers/AuthController.php`` 
 
 проверяется токен на основе `` PUBLIC_KEY``
