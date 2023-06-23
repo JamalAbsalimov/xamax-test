@@ -6,11 +6,11 @@
 make build
 ```
 
-Команда соберет установит все зависимости.
+Команда соберет и установит все зависимости.
 После завершения команды в консоли выведтся PUBLIC_KEY который необходимо перенести в:
 
 ``
-/app/.env -> JWT_PUBLIC={PUBLIC}
+/app/.env -> JWT_PUBLIC="{PUBLIC}"
 ``
 
 ## Запустить скрипт
@@ -19,7 +19,6 @@ make requrest
 ```
 
 В файле ``app/app/Http/Controllers/AuthController.php`` 
-
 проверяется токен на основе `` PUBLIC_KEY``
 
 
@@ -30,5 +29,4 @@ make requrest
 
 
 В файле ``cli/app/src/Endpoint/Console/DoNothing.php ``
-
-Генерируется private и public keys
+генерируется private и public keys
