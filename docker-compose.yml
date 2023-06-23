@@ -1,0 +1,51 @@
+version: '3.7'
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    environment:
+      TZ: "Europe/Moscow"
+    volumes:
+      - ./app:/app
+    depends_on:
+      - php-fpm
+    networks:
+      default:
+        ipv4_address: 172.10.0.2
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    environment:
+      TZ: "Europe/Moscow"
+    networks:
+      default:
+        ipv4_address: 172.10.0.3
+        aliases:
+          - auth
+  php-cli:
+    build:
+      context: ./docker/php-cli
+    working_dir: /app
+    volumes:
+      - ./cli:/app
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    environment:
+      TZ: "Europe/Moscow"
+    networks:
+      default:
+        ipv4_address: 172.10.0.4
+        aliases:
+          - cli
+    tty: true
+
+networks:
+  default:
+    name: idnet
+    external: true
+
