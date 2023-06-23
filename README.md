@@ -7,7 +7,7 @@ make build
 ```
 
 Команда соберет и установит все зависимости.
-После завершения команды в консоли выведтся PUBLIC_KEY который необходимо перенести в:
+После завершения команды в консоли выведется PUBLIC_KEY который необходимо перенести в:
 
 ``
 /app/.env -> JWT_PUBLIC="{PUBLIC}"
@@ -25,7 +25,7 @@ make requrest
 
 В файле ``cli/app/src/Endpoint/Console/VerifiedJwtToken.php`` 
 отправляет запрос в ``app/app/Http/Controllers/AuthController.php`` 
-по url http://172.10.0.2/auth
+по url http://172.10.0.2/auth с токеном авторизаций по PRIVATE_KEY
 
 
 В файле ``cli/app/src/Endpoint/Console/DoNothing.php ``
