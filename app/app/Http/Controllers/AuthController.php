@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function __invoke(Request $request)
     {
         $rawToken = $request->header('Authorization');
-
+        //Вынести потом в middleware
         try {
             Jwt::verifyToken($rawToken);
 
